@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function isPangram(string) {
+        let arr = [
+          97,
+          98,
+          99,
+          100,
+          101,
+          102,
+          103,
+          104,
+          105,
+          106,
+          107,
+          108,
+          109,
+          110,
+          111,
+          112,
+          113,
+          114,
+          115,
+          116,
+          117,
+          118,
+          119,
+          120,
+          121,
+          122,
+        ];
+        string = string.toLowerCase().split('');
+        for (let i = 0; i < string.length; i++) {
+          if (arr.indexOf(string[i].charCodeAt()) >= 0) {
+            arr.splice(arr.indexOf(string[i].charCodeAt()), 1);
+          }
+        }
+
+        return arr.length === 0;
+      }
+      console.log(isPangram('The quick brown fox jumps over the lazy dog.'));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Square into Squares</title>
+  </head>
+  <body>
+    <script>
+      function arrayOfSquares(n) {
+        let arr = [];
+        let squares;
+        for (let i = n; i > 0; i--) {
+          squares = i * i;
+          arr.push(squares);
+        }
+        return arr;
+      }
+      console.log(arrayOfSquares(7));
+
+      function decompose(n) {
+        let squares = arrayOfSquares(n);
+        let result = [];
+        let sum = 0;
+        for (let i = 1; i < squares.length; i++) {
+          if (sum === squares[0]) {
+            return result;
+          } else {
+            sum = sum + squares[i];
+          }
+        }
+        return sum;
+      }
+      console.log(decompose(7));
+    </script>
+  </body>
+</html>

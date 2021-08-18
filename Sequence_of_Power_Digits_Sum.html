@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task</title>
+  </head>
+  <body>
+    <script>
+      function exponentiation(number, n) {
+        let digit = [number].toString().split('');
+        let sum = 0;
+        let result = 0;
+        for (let i = 0; i < digit.length; i++) {
+          result = Math.pow(digit[i], n);
+          sum = sum + result;
+        }
+        return sum;
+      }
+
+      console.log(exponentiation(420, 3));
+
+      function sumPowDigSeq(start, n, k) {
+        let number = start;
+        let arr = [];
+        for (let i = 0; i < k; i++) {
+          number = exponentiation(number, n);
+          arr.push(number);
+        }
+        return pattern(arr);
+      }
+      console.log(sumPowDigSeq(420, 4, 30));
+
+      function pattern(arr) {
+        let patt = [];
+        let r = arr.length - 1;
+
+        for (let i = 0; i < arr.length; i++) {
+          let newArr = [...arr];
+          newArr.splice(i, 1);
+          if (newArr.indexOf(arr[i]) !== -1 && patt.indexOf(arr[i]) === -1) {
+            patt.push(arr[i]);
+          }
+        }
+        let result = arr.indexOf(patt[0]) + 1;
+        return [result, patt, patt.length, arr[arr.length - 1]];
+      }
+
+      console.log(pattern([72, 351, 153, 153, 153]));
+    </script>
+  </body>
+</html>
